@@ -8,6 +8,7 @@ import br.com.icorrea.login.controller.LoginController;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -85,13 +86,20 @@ public class CadastroView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextEmailActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        LoginController cadastro = new LoginController();
-        try {
-            cadastro.cadastroUser(this);
-        } catch (SQLException ex) {
-            Logger.getLogger(CadastroView.class.getName()).log(Level.SEVERE, null, ex);
+        if(jTextName.getText().matches("") || jTextEmail.getText().matches("") || jPassword.getText().matches("")) {
+             JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos");
+        } else {
+            LoginController cadastro = new LoginController();
+            try {
+                cadastro.cadastroUser(this);
+            } catch (SQLException ex) {
+                Logger.getLogger(CadastroView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(rootPane, "Cadastro realizado com sucesso");
+            this.setVisible(false);
         }
-        this.setVisible(false);
+        
+        
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     public JPasswordField getjPassword() {

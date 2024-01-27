@@ -4,6 +4,14 @@
  */
 package br.com.icorrea.login.view;
 
+import br.com.icorrea.login.controller.LoginController;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuario
@@ -26,23 +34,23 @@ public class LoginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField2 = new javax.swing.JTextField();
+        jPassword = new javax.swing.JPasswordField();
+        jTextNome = new javax.swing.JTextField();
         jButtonCadastrar = new javax.swing.JButton();
         jButtonEntrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, 320, 40));
+        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, 320, 40));
 
-        jTextField2.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextNome.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
+        jTextNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextNomeActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 320, 40));
+        getContentPane().add(jTextNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 320, 40));
 
         jButtonCadastrar.setContentAreaFilled(false);
         jButtonCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -55,6 +63,11 @@ public class LoginView extends javax.swing.JFrame {
 
         jButtonEntrar.setContentAreaFilled(false);
         jButtonEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEntrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, 240, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/TelaLogin.png"))); // NOI18N
@@ -65,15 +78,47 @@ public class LoginView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextNomeActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         CadastroView telaDeCadastro = new CadastroView();
         telaDeCadastro.setVisible(true);
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
+    private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
+        if (jTextNome.getText().matches("") || jPassword.getText().matches("")) {
+            JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos");
+        } else {
+             LoginController login = new LoginController();
+             
+            try {
+                login.loginUser(this);
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }  
+    }//GEN-LAST:event_jButtonEntrarActionPerformed
+
+    public JPasswordField getjPassword() {
+        return jPassword;
+    }
+
+    public void setjPassword(JPasswordField jPassword) {
+        this.jPassword = jPassword;
+    }
+
+    public JTextField getjTextNome() {
+        return jTextNome;
+    }
+
+    public void setjTextNome(JTextField jTextNome) {
+        this.jTextNome = jTextNome;
+    }
+
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -113,7 +158,7 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JButton jButtonEntrar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPasswordField jPassword;
+    private javax.swing.JTextField jTextNome;
     // End of variables declaration//GEN-END:variables
 }
