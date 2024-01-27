@@ -4,6 +4,13 @@
  */
 package br.com.icorrea.login.view;
 
+import br.com.icorrea.login.controller.LoginController;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuario
@@ -29,7 +36,7 @@ public class CadastroView extends javax.swing.JFrame {
         jTextName = new javax.swing.JTextField();
         jButtonCadastrar = new javax.swing.JButton();
         jTextEmail = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jPassword = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,7 +66,7 @@ public class CadastroView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 320, 40));
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 440, 320, 40));
+        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 440, 320, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/TelaCadastro.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -78,9 +85,41 @@ public class CadastroView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextEmailActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        LoginController cadastro = new LoginController();
+        try {
+            cadastro.cadastroUser(this);
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastroView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.setVisible(false);
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
+    public JPasswordField getjPassword() {
+        return jPassword;
+    }
+
+    public void setjPassword(JPasswordField jPassword) {
+        this.jPassword = jPassword;
+    }
+
+    public JTextField getjTextEmail() {
+        return jTextEmail;
+    }
+
+    public void setjTextEmail(JTextField jTextEmail) {
+        this.jTextEmail = jTextEmail;
+    }
+
+    public JTextField getjTextName() {
+        return jTextName;
+    }
+
+    public void setjTextName(JTextField jTextName) {
+        this.jTextName = jTextName;
+    }
+
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -120,7 +159,7 @@ public class CadastroView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPassword;
     private javax.swing.JTextField jTextEmail;
     private javax.swing.JTextField jTextName;
     // End of variables declaration//GEN-END:variables

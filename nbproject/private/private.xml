@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/CODES/back-end/Login/src/resources/TelaCadastro.png</file>
-            <file>file:/C:/CODES/back-end/Login/src/br/com/icorrea/login/view/LoginView.java</file>
-            <file>file:/C:/CODES/back-end/Login/src/resources/TelaLogin.png</file>
+            <file>file:/C:/CODES/back-end/Login/src/br/com/icorrea/login/model/Login.java</file>
+            <file>file:/C:/CODES/back-end/Login/src/br/com/icorrea/login/controller/LoginController.java</file>
+            <file>file:/C:/CODES/back-end/Login/src/br/com/icorrea/dao/LoginDAO.java</file>
+            <file>file:/C:/CODES/back-end/Login/src/br/com/icorrea/login/view/CadastroView.java</file>
+            <file>file:/C:/CODES/back-end/Login/src/br/com/icorrea/dao/Conexao.java</file>
         </group>
     </open-files>
 </project-private>
